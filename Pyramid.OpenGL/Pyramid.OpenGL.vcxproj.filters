@@ -33,9 +33,6 @@
     <ClCompile Include="Pyramid.cpp">
       <Filter>Source Files\Elements</Filter>
     </ClCompile>
-    <ClCompile Include="Pyramid.Bkp.cpp">
-      <Filter>Source Files\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Source Files\Elements</Filter>
     </ClCompile>
@@ -54,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">

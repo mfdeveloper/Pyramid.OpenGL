@@ -11,7 +11,6 @@ Pyramid::Pyramid()
 
     // ------------- Vertices, Edges and Faces ------------
     createWinged();
-
 }
 
 void Pyramid::createWinged()
@@ -22,8 +21,6 @@ void Pyramid::createWinged()
 
     // Front
     vector<Vertex> vFrontA = { { vertexFrontA, vertexFrontB, vertexFrontC } };
-    //vector<Vertex> vFrontB = { { vertexFrontC, vertexFrontA } };
-
     vector<Edge> edgesFront = { { Edge("Front.a", vFrontA) } };
 
     Face faceFront = Face("Front.1", edgesFront);
@@ -35,8 +32,6 @@ void Pyramid::createWinged()
     Vertex vertexRightC = Vertex("Right.C", new Point(1.0f, -1.0f, -1.0f), new Color(0.0f, 0.0f, 1.0f));
 
     vector<Vertex> vEdgeRightA = { { vertexRightA, vertexRightB, vertexRightC } };
-    //vector<Vertex> vEdgeRightB = { {  vertexRightC, vertexRightA } };
-
     vector<Edge> edgesRight = { { Edge("Right.a", vEdgeRightA) } };
 
     Face faceRight = Face("Right.2", edgesRight);
@@ -48,9 +43,8 @@ void Pyramid::createWinged()
     Vertex vertexBackC = Vertex("Back.C", new Point(-1.0f, -1.0f, -1.0f));
 
     vector<Vertex> vEdgeBackA = { { vertexBackA, vertexBackB, vertexBackC } };
-    //vector<Vertex> vEdgeBackB = { { vertexBackC, vertexBackA } };
-
     vector<Edge> edgesBack = { { Edge("Back.a", vEdgeBackA) } };
+
     Face faceBack = Face("Back.3", edgesBack);
     faces.push_back(faceBack);
 
@@ -60,7 +54,6 @@ void Pyramid::createWinged()
     Vertex vertexLeftC = Vertex("Left.C", new Point(-1.0f, -1.0f, 1.0f), new Color(0.0f, 0.0f, 1.0f));
 
     vector<Vertex> vEdgeLeftA = { { vertexLeftA, vertexLeftB, vertexLeftC } };
-    //vector<Vertex> vEdgeLeftB = { { vertexLeftC, vertexLeftA } };
 
     vector<Edge> edgesLeft = { { Edge("Left.a", vEdgeLeftA) } };
     Face faceLeft = Face("Left.4", edgesLeft);
@@ -72,7 +65,6 @@ void Pyramid::createWinged()
     Vertex vertexBottom1C = Vertex("Bottom1.C", new Point(-1.0f, -1.0f, -1.0f), new Color(0.0f, 0.0f, 1.0f));
 
     vector<Vertex> vEdgeBottom1A = { { vertexBottom1A, vertexBottom1B, vertexBottom1C } };
-    //vector<Vertex> vEdgeBottom1B = { { vertexBottom1C, vertexBottom1A } };
 
     vector<Edge> edgesBottom1 = { { Edge("Bottom1.a", vEdgeBottom1A) } };
     Face faceBottom1 = Face("Bottom1.5", edgesBottom1);
@@ -84,9 +76,8 @@ void Pyramid::createWinged()
     Vertex vertexBottom2C = Vertex("Bottom2.C", new Point(1.0f, -1.0f, 1.0f), new Color(0.0f, 0.0f, 1.0f));
 
     vector<Vertex> vEdgeBottom2A = { { vertexBottom2A, vertexBottom2B, vertexBottom2C } };
-    //vector<Vertex> vEdgeBottom2B = { { vertexBottom2C, vertexBottom2A } };
-
     vector<Edge> edgesBottom2 = { { Edge("Bottom2.a", vEdgeBottom2A) } };
+
     Face faceBottom2 = Face("Bottom2.6", edgesBottom2);
     faces.push_back(faceBottom2);
 }
@@ -162,6 +153,7 @@ void Pyramid::draw(bool run)
 
         //drawRaw();
         drawWinged();
+
         glEnd();
 
         glutSwapBuffers();  // Swap the front and back frame buffers (double buffering)
