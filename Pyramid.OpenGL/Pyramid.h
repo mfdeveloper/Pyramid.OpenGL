@@ -1,6 +1,13 @@
+#ifndef PYRAMID_H
+#define PYRAMID_H
+
+#ifdef _MSC_VER
 #pragma once
+#endif  // _MSC_VER
+
 #include <GL/freeglut.h>
 #include <vector>
+#include <map>
 #include "Point.h"
 #include "Vertex.h"
 #include "Edge.h"
@@ -32,11 +39,11 @@ class Pyramid
 		float yPos;
 		float zPos;
 
-		vector<Face> faces;
+		std::vector<Face *> faces;
+		std::vector<Edge *> edges;
 
 		Pyramid();
 
-		void initOpenGL();
 		void createWinged();
 
 		/*
@@ -46,5 +53,9 @@ class Pyramid
 		void drawWinged();
 		void drawRaw();
 
+private:
+	std::vector<std::string> renderedVertices;
+	bool isDrawnVertex(std::string edgeLabel, Vertex* verticeToCompare);
 };
 
+#endif // !PYRAMID_H

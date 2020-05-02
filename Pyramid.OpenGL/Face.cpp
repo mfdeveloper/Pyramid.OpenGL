@@ -1,7 +1,8 @@
 #include "Face.h"
 
-Face::Face(string name, vector<Edge> edges)
+using namespace std;
+
+Face::Face(string name)
 {
 	this->label = name;
-	this->edges = edges;
 }

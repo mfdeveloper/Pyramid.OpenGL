@@ -1,19 +1,22 @@
-#pragma once
+#ifndef FACE_H
+#define FACE_H
 
-#include <iostream>
+#ifdef _MSC_VER
+#pragma once
+#endif  // _MSC_VER
+
 #include <vector>
 #include <string>
-#include "Edge.h"
-
-using namespace std;
+#include "Vertex.h"
 
 class Face
 {
 public:
-	string label;
-	vector<Edge> edges;
 
-	Face(string name, vector<Edge> edges);
+	std::string label;
+	std::vector<Vertex *> vertices;
 
+	Face(std::string name);
 };
 
+#endif // !FACE_H

@@ -10,6 +10,27 @@ char title[] = "3D Shapes";
 
 Pyramid pyramid;
 
+void initOpenGL() {
+
+    // Set background color to black and opaque
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    // Set background depth to farthest
+    glClearDepth(1.0f);
+
+    // Enable depth testing for z-culling
+    glEnable(GL_DEPTH_TEST);
+
+    // Set the type of depth-test
+    glDepthFunc(GL_LEQUAL);
+
+    // Enable smooth shading
+    glShadeModel(GL_SMOOTH);
+
+    // Nice perspective corrections
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+}
+
 void display() {
     pyramid.draw(true);
 }
@@ -39,8 +60,8 @@ int main(int argc, char** argv) {
     glutDisplayFunc(&display);       // Register callback handler for window re-paint event
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
 
-    pyramid.initOpenGL();
-    //initGL();                       // Our own OpenGL initialization
+    initOpenGL();
+
     glutMainLoop();                 // Enter the infinite event-processing loop
     return 0;
 }
