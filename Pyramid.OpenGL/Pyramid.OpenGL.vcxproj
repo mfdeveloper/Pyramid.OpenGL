@@ -45,6 +45,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -105,10 +106,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(VcpkgRoot)debug\lib\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(VcpkgRoot)debug\lib;$(VcpkgRoot)debug\lib\manual-link;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,9 +151,12 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Face.cpp" />
+    <ClCompile Include="FileOff.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OpenGLManager.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Pyramid.cpp" />
+    <ClCompile Include="Shape3D.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +167,12 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Face.h" />
+    <ClInclude Include="FileOff.h" />
+    <ClInclude Include="OpenGLManager.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Shape3D.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
