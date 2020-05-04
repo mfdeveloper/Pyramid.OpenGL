@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp>
-#include <boost/regex.hpp>
 #include "FileOff.h"
 #include "Point.h"
 
@@ -16,6 +15,9 @@ string FileOff::getCurrentDir()
 
 	// The cli executable file (.exe) returns from "x64/Release" folder
 	// Go back to the root project dir
+
+	//TODO: Verify if this method is called from
+	//cli or test project
 	return pathObj.parent_path().parent_path().string();
 }
 
@@ -38,10 +40,6 @@ FileOff* FileOff::load(string path)
 
 			while (getline(file, line))
 			{
-				boost::regex exprFileType{"^OFF$"};
-				boost::regex exprComment{"(^#)|(//)"};
-				boost::regex exprCounts{"(\\d+)\\s(\\d+)\\s(\\d+)"};
-				boost::regex exprVerticesCoords{"^\\s+(-?\\d+)\\.(\\d+)\\s+(-?\\d+)\\.(\\d+)\\s+(-?\\d+)\\.(\\d+)"};
 
 				// Ignore commented or blank lines
 				if (boost::regex_match(line, exprComment) || line.empty())
@@ -71,11 +69,10 @@ FileOff* FileOff::load(string path)
 				}
 
 				// Vertices points
-				if (boost::regex_match(line, exprVerticesCoords))
+				if (vertices.size() <= countElements["vertex"] && boost::regex_match(line, exprVerticesCoords))
 				{
 					string label = "Vertex.";
 					vector<string> coordsValues;
-					boost::regex exprNormalizeSpaces{ "\\s+" };
 
 					trim_left(line);
 					line = boost::regex_replace(line, exprNormalizeSpaces, " ");
@@ -100,6 +97,42 @@ FileOff* FileOff::load(string path)
 					verticeLetter++;
 				}
 
+				// Faces points
+				if (faces.size() <= countElements["faces"] && boost::regex_match(line, exprFaces))
+				{
+					vector<string> faceVertices;
+
+					trim_left(line);
+					line = boost::regex_replace(line, exprNormalizeSpaces, " ");
+					split(faceVertices, line, is_space());
+
+					if (!faceVertices.empty())
+					{
+
+						Face* face = new Face("Facexx");
+						int totalVertices = stoi(faceVertices[0]);
+
+						for (int i = 1; i <= totalVertices; i++)
+						{
+							int vertexIndex = stoi(faceVertices[i]);
+							Vertex* vertex = vertices[vertexIndex];
+
+							// Avoid replace an existent color
+							if (vertex->color == nullptr)
+							{
+								vector<string> colorValues(faceVertices.begin() + totalVertices + 1, faceVertices.end());
+								vertex->color = new Color(colorValues);
+							}
+							
+							verticesIndex.push_back(vertexIndex);
+
+							face->vertices.push_back(vertex);
+						}
+
+						faces.push_back(face);
+					}
+				}
+
 				std::cout << line << '\n';
 				i++;
 			}
@@ -109,7 +142,7 @@ FileOff* FileOff::load(string path)
 
 			if (vertices.size() != countElements["vertex"])
 			{
-				throw std::runtime_error("[VertexCountError]: The total of vertices is not equal a all vertices coordinates lines");
+				throw std::runtime_error("[VertexCountError]: The total of vertices is not equal to all vertices coordinates lines");
 			}
 		}
 		else if (file.fail())
@@ -119,6 +152,7 @@ FileOff* FileOff::load(string path)
 	}
 
 	vectorLines.assign(lines.begin(), lines.end());
+	loaded = true;
 	return this;
 }
 
@@ -137,6 +171,11 @@ bool FileOff::isValid()
 	}
 
 	return false;
+}
+
+bool FileOff::isLoaded()
+{
+	return (loaded && vertices.size() > 0 && faces.size() > 0);
 }
 
 vector<string> FileOff::getData()

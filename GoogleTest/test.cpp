@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "FileOff.cpp"
 #include "Point.cpp"
+#include "Color.cpp"
 #include "Vertex.cpp"
+#include "Face.cpp"
 
 /*
     Test class for read file .off
@@ -56,8 +58,15 @@ TEST_F(FileOffTest, CountElements) {
 TEST_F(FileOffTest, VerticesCoordinates) {
 
     FileOff* loadedFile = fileOff->load(fullPath);
-
     size_t size = loadedFile->vertices.size();
 
     EXPECT_FALSE(loadedFile->vertices.empty());
+}
+
+TEST_F(FileOffTest, FacesVerticesIndexes) {
+
+    FileOff* loadedFile = fileOff->load(fullPath);
+    size_t size = loadedFile->faces.size();
+
+    EXPECT_FALSE(loadedFile->faces.empty());
 }

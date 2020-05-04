@@ -25,6 +25,12 @@
     <Filter Include="Header Files\Model">
       <UniqueIdentifier>{f7060579-3c0a-41b8-a2ac-db15c0477b12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Model\FileOff">
+      <UniqueIdentifier>{43b35b62-9b0e-4b44-8b0a-f8ad426b0e56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\FileOff">
+      <UniqueIdentifier>{d0799242-c8fc-455e-b32c-0009cc4269af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -48,14 +54,17 @@
     <ClCompile Include="Color.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="FileOff.cpp">
-      <Filter>Source Files\Model</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLManager.cpp">
       <Filter>Source Files\Elements</Filter>
     </ClCompile>
     <ClCompile Include="Shape3D.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileOff.cpp">
+      <Filter>Source Files\Model\FileOff</Filter>
+    </ClCompile>
+    <ClCompile Include="FileOffRender.cpp">
+      <Filter>Source Files\Model\FileOff</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,14 +93,17 @@
     <ClInclude Include="Color.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
-    <ClInclude Include="FileOff.h">
-      <Filter>Header Files\Model</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLManager.h">
       <Filter>Header Files\Elements</Filter>
     </ClInclude>
     <ClInclude Include="Shape3D.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOff.h">
+      <Filter>Header Files\Model\FileOff</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOffRender.h">
+      <Filter>Header Files\Model\FileOff</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

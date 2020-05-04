@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Vertex::Vertex(string name, Point *point)
+Vertex::Vertex(string name, Point *point): color(nullptr)
 {
 	this->label = name;
 	this->point = point;

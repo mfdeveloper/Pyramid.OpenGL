@@ -17,6 +17,7 @@ public:
 	std::vector<Vertex *> vertices;
 
 	Face(std::string name);
+	
 };
 
 #endif // !FACE_H

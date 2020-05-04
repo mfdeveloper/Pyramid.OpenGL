@@ -10,7 +10,7 @@ void Pyramid::draw()
 
     for (Edge* edge : edges) {
 
-        if (edge->vertexOrigin != NULL)
+        if (edge->vertexOrigin != nullptr)
         {
             if (!isDrawnVertex(edge->label, edge->vertexOrigin))
             {
@@ -34,7 +34,7 @@ void Pyramid::draw()
             if (!isDrawnVertex(edge->label, edge->vertexDestiny))
             {
 
-                if (edge->vertexDestiny->color != NULL)
+                if (edge->vertexDestiny->color != nullptr)
                 {
                     glColor3f(edge->vertexDestiny->color->red, edge->vertexDestiny->color->green, edge->vertexDestiny->color->blue);
                 }
