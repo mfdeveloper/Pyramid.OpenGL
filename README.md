@@ -13,6 +13,12 @@ This is a [Class Diagram](https://en.wikipedia.org/wiki/Class_diagram) generated
 ![](Images/ClassDiagram.png)
 
 
+## Documentation
+
+See the **wiki** of this repository to extra docs, with the `Winged Edge` explanation, for example:
+
+- [Winged Edge: Pyramid](https://github.com/mfdeveloper/Pyramid.OpenGL/wiki/Winged-Edge)
+
 ## Getting Started
 
 1. Using [Visual Studio](https://visualstudio.microsoft.com/pt-br/vs/?rr=https%3A%2F%2Fwww.google.com%2F), [VSCode](https://code.visualstudio.com/) or any other IDE/Editor that opens a `Solution`
